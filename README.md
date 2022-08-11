@@ -9,10 +9,21 @@
 if ((oSession.uriContains("neopets.com/crossdomain.xml") || oSession.uriContains("neopets.com") && oSession.HTTPMethodIs("POST")) && !oSession.isHTTPS) {
     oSession.oRequest.headers.UriScheme = "https";
 }
+
 ```
 5. Save (ctrl + s or file -> save). Close ScriptEditor
 6. In fiddler go to Tools -> Options -> HTTPS -> make sure capture https connect, decrypt https traffic and ignore server certificate errors are enabled. Restart fiddler
 7. Open game in neo (and always keep fiddler open) 
+
+## Extra rules that are good to add
+```
+if (oSession.uriContains("neopets") && oSession.uriContains(".swf")) {
+    oSession.host = "images.neopets.com";
+    oSession.url = oSession.url.Replace("/games/https://images.neopets.com/games/", "/games/").Replace("games/games", "games"); 
+}
+```
+
+This fixes issues with a few games like [Clara on Ice](https://www.neopets.com/games/game.phtml?game_id=1172&size=regular&quality=high&play=true) and [Let it Slide](https://www.neopets.com/games/game.phtml?game_id=970&size=regular&quality=high&play=true)
 
 ## Playing newer games
 
@@ -30,11 +41,6 @@ In the AutoResponder section, first enable rules and make sure unmatched request
 If you don't want to setup a fix for each broken game or don't want to trust using a modified swf, you can still play games with a few extra rules. However, score sending won't work. Add these rules that fix most issues with using dev server instead of regular:
 
 ```
-if (oSession.uriContains("neopets") && oSession.uriContains(".swf")) {
-    oSession.host = "images.neopets.com";
-    oSession.url = oSession.url.Replace("games/games", "games");
-}
-
 if (oSession.uriContains("dev.neopets.com") && oSession.HTTPMethodIs("POST")) {
     oSession.host = "www.neopets.com";
     if (oSession.uriContains("gettranslationxml.phtml")) {
