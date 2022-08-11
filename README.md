@@ -32,6 +32,14 @@ if (oSession.uriContains("virtools.download.akamai.com/6712/player/install/")) {
 
 This fixes 3dvia games like [Terror Mountain Tilt](https://www.neopets.com/games/game.phtml?game_id=925&size=regular&quality=high&play=true). Note that these don't work in waterfox and you need IE or chrome, follow [these instructions](https://www.youtube.com/watch?v=NH8WfY7MvU4)
 
+```
+if (oSession.uriContains("shellconfig.xml") && oSession.HostnameIs("www.neopets.com")) {
+  oSession.host = "images.neopets.com";
+}
+```
+
+This fixes issues with newer games
+
 ## Playing newer games
 
 That will work with most games, as it will fix main issues about neo returning 301 status code to redirect to https (which doesn't support POST) instead of 308 (which does) + some crossdomain.xml calls don't work with redirect.
@@ -41,7 +49,7 @@ Still, some games have further issues like [Assignment 53](https://www.neopets.c
 
 ![image](https://user-images.githubusercontent.com/5660396/184058059-5d0b1601-ecdb-44af-a0d8-de48a0b5f3b9.png)
 
-In the AutoResponder section, first enable rules and make sure unmatched requests passthrough is checked. Then click add rule and input `EXACT:https://images.neopets.com/games/g1347_v66_45083.swf` and then in the second box click the dropdown arrow and find file. Then browse your pc for the fixed swf file.
+In the AutoResponder section, first enable rules and make sure unmatched requests passthrough is checked. Then click add rule and input `EXACT:https://images.neopets.com/games/g1347_v66_45083.swf` and then in the second box click the dropdown arrow and find file. Then browse your pc for the fixed swf file. You also need the shellconfig rule above
 
 ## Playing newer games alternative
 
