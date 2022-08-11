@@ -1,3 +1,5 @@
+# How to play most flash games
+
 1. Do Waterfox steps from [this reddit post](https://www.reddit.com/r/neopets/comments/s7jzyt/how_to_enable_flash_post_endoflife/)
 2. Install [Fiddler Classic](https://www.telerik.com/download/fiddler) (if mac, try [virtual machine](https://docs.telerik.com/fiddler/configure-fiddler/tasks/configureformac) or [proxyman](proxyman))
 3. Open fiddler, go to rules -> customize rules
@@ -12,6 +14,7 @@ if ((oSession.uriContains("neopets.com/crossdomain.xml") || oSession.uriContains
 6. In fiddler go to Tools -> Options -> HTTPS -> make sure capture https connect, decrypt https traffic and ignore server certificate errors are enabled. Restart fiddler
 7. Open game in neo (and always keep fiddler open) 
 
+## Playing newer games
 
 That will work with most games, as it will fix main issues about neo returning 301 status code to redirect to https (which doesn't support POST) instead of 308 (which does) + some crossdomain.xml calls don't work with redirect.
 A good way to test if it is working is [Meerca Chase 2](https://www.neopets.com/games/game.phtml?game_id=500&size=regular&quality=high&play=true)
@@ -21,4 +24,29 @@ Still, some games have further issues like [Assignment 53](https://www.neopets.c
 ![image](https://user-images.githubusercontent.com/5660396/184058059-5d0b1601-ecdb-44af-a0d8-de48a0b5f3b9.png)
 
 In the AutoResponder section, first enable rules and make sure unmatched requests passthrough is checked. Then click add rule and input `EXACT:https://images.neopets.com/games/g1347_v66_45083.swf` and then in the second box click the dropdown arrow and find file. Then browse your pc for the fixed swf file.
+
+## Playing newer games alternative
+
+If you don't want to setup a fix for each broken game or don't want to trust using a modified swf, you can still play games with a few extra rules. However, score sending won't work. Add these rules that fix most issues with using dev server instead of regular:
+
+```
+if (oSession.uriContains("neopets") && oSession.uriContains(".swf")) {
+    oSession.host = "images.neopets.com";
+    oSession.url = oSession.url.Replace("games/games", "games");
+}
+
+if (oSession.uriContains("dev.neopets.com") && oSession.HTTPMethodIs("POST")) {
+    oSession.host = "www.neopets.com";
+    if (oSession.uriContains("gettranslationxml.phtml")) {
+        oSession.oRequest.headers.HTTPMethod = "GET";
+        oSession.fullUrl += '?' + oSession.GetRequestBodyAsString();
+    }
+}
+
+if (oSession.uriContains("gettranslationxml.phtml")  && oSession.HTTPMethodIs("GET")) {
+    oSession.fullUrl = oSession.fullUrl.replace("lang=ch", "lang=en");
+}
+```
+
+
 
