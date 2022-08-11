@@ -7,10 +7,11 @@
 if ((oSession.uriContains("neopets.com/crossdomain.xml") || oSession.uriContains("neopets.com") && oSession.HTTPMethodIs("POST")) && !oSession.isHTTPS) {
     oSession.oRequest.headers.UriScheme = "https";
 }
+```
 5. Save (ctrl + s or file -> save). Close ScriptEditor
 6. In fiddler go to Tools -> Options -> HTTPS -> make sure capture https connect, decrypt https traffic and ignore server certificate errors are enabled. Restart fiddler
 7. Open game in neo (and always keep fiddler open) 
-```
+
 
 That will work with most games, as it will fix main issues about neo returning 301 status code to redirect to https (which doesn't support POST) instead of 308 (which does) + some crossdomain.xml calls don't work with redirect.
 A good way to test if it is working is [Meerca Chase 2](https://www.neopets.com/games/game.phtml?game_id=500&size=regular&quality=high&play=true)
