@@ -9,7 +9,6 @@
 if ((oSession.uriContains("neopets.com/crossdomain.xml") || oSession.uriContains("neopets.com") && oSession.HTTPMethodIs("POST")) && !oSession.isHTTPS) {
     oSession.oRequest.headers.UriScheme = "https";
 }
-
 ```
 5. Save (ctrl + s or file -> save). Close ScriptEditor
 6. In fiddler go to Tools -> Options -> HTTPS -> make sure capture https connect, decrypt https traffic and ignore server certificate errors are enabled. Restart fiddler
