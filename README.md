@@ -25,6 +25,14 @@ if (oSession.uriContains("neopets") && oSession.uriContains(".swf")) {
 
 This fixes issues with a few games like [Clara on Ice](https://www.neopets.com/games/game.phtml?game_id=1172&size=regular&quality=high&play=true) and [Let it Slide](https://www.neopets.com/games/game.phtml?game_id=970&size=regular&quality=high&play=true)
 
+```
+if (oSession.uriContains("virtools.download.akamai.com/6712/player/install/")) {
+  oSession.fullUrl = "https://3dlifeplayer.dl.3dvia.com/" + oSession.url.Substring(oSession.url.lastIndexOf("player/install"));		
+}
+```
+
+This fixes 3dvia games like [Terror Mountain Tilt](https://www.neopets.com/games/game.phtml?game_id=925&size=regular&quality=high&play=true). Note that these don't work in waterfox and you need IE or chrome, follow [these instructions](https://www.youtube.com/watch?v=NH8WfY7MvU4)
+
 ## Playing newer games
 
 That will work with most games, as it will fix main issues about neo returning 301 status code to redirect to https (which doesn't support POST) instead of 308 (which does) + some crossdomain.xml calls don't work with redirect.
