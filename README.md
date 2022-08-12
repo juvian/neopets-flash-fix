@@ -82,7 +82,7 @@ if (oSession.uriContains("play_shockwave.phtml")) {
 }
 ```
 
-Note that inlike the other rules it does not go in OnBeforeRequest sections, it goes in the OnBeforeResponse
+Note that unlike the other rules it does not go in OnBeforeRequest sections, it goes in the OnBeforeResponse
 
 ![image](https://user-images.githubusercontent.com/5660396/184269837-e09895e8-da86-4df7-99a6-ac6dd04b7446.png)
 
