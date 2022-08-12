@@ -82,11 +82,23 @@ if (oSession.uriContains("play_shockwave.phtml")) {
 }
 ```
 
-Note that unlike the other rules it does not go in OnBeforeRequest sections, it goes in the OnBeforeResponse
+Note that unlike the other rules it does not go in OnBeforeRequest section, it goes in the OnBeforeResponse
 
 ![image](https://user-images.githubusercontent.com/5660396/184269837-e09895e8-da86-4df7-99a6-ac6dd04b7446.png)
 
 Also note that you need to refresh multiple times (can even be 30) until game loading ends instead of getting stuck on loading. As for hannah and the ice caves, if you get the "Sorry. It appears that this game is not running at its intended location" error, you need to hold shift + o + k while it loads for it to work. 
 
+## Neohome v2
+
+```
+if (oSession.uriContains("neohome/property/")) {
+    var body = oSession.GetResponseBodyAsString();
+    if (body.Contains("NeoHomeApplication_v")) {
+        oSession.utilSetResponseBody(body.Replace('services.neopets', 'www.neopets').Replace("http%3A", "https%3A"));
+    }
+}
+```
+
+Note that unlike the other rules it does not go in OnBeforeRequest section, it goes in the OnBeforeResponse
 
 
