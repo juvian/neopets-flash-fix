@@ -16,13 +16,14 @@ if ((oSession.uriContains("neopets.com/crossdomain.xml") || oSession.uriContains
 
 ## Extra rules that are good to add
 ```
-if (oSession.uriContains("neopets") && oSession.uriContains(".swf")) {
+if (oSession.uriContains("neopets") && (oSession.uriContains(".swf") || oSession.uriContains("/config.xml"))) {
     oSession.host = "images.neopets.com";
     oSession.url = oSession.url.Replace("/games/https://images.neopets.com/games/", "/games/").Replace("games/games", "games"); 
 }
 ```
 
-This fixes issues with a few games like [Clara on Ice](https://www.neopets.com/games/game.phtml?game_id=1172&size=regular&quality=high&play=true) and [Let it Slide](https://www.neopets.com/games/game.phtml?game_id=970&size=regular&quality=high&play=true)
+This fixes issues with a few games like [Clara on Ice](https://www.neopets.com/games/game.phtml?game_id=1172&size=regular&quality=high&play=true), [Let it Slide](https://www.neopets.com/games/game.phtml?game_id=970&size=regular&quality=high&play=true) and [Extreme Potato Counter
+](https://www.neopets.com/games/game.phtml?game_id=226&size=regular&quality=high&play=true)
 
 ```
 if (oSession.uriContains("virtools.download.akamai.com/6712/player/install/")) {
