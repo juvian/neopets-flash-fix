@@ -78,16 +78,16 @@ To play shockwave games you need to install it and use IE / chrome IE tab. If br
 if (oSession.uriContains("play_shockwave.phtml")) {
     var body = oSession.GetResponseBodyAsString();
     if (body.Contains("game_container")) {
-        oSession.utilSetResponseBody(body.Replace('document.write', 'console.log'));
+        oSession.utilSetResponseBody(body.Replace('document.write', 'console.log').Replace("swRestart='false'", "swRestart='true'").Replace("swContextMenu='false'", "swContextMenu='true'"));
     }
 }
 ```
 
-Note that unlike the other rules it does not go in OnBeforeRequest section, it goes in the OnBeforeResponse
+Note that unlike the other rules it does not go in OnBeforeRequest section, it goes in the OnBeforeResponse.
 
 ![image](https://user-images.githubusercontent.com/5660396/184269837-e09895e8-da86-4df7-99a6-ac6dd04b7446.png)
 
-Also note that you need to refresh multiple times (can even be 30) until game loading ends instead of getting stuck on loading. As for hannah and the ice caves, if you get the "Sorry. It appears that this game is not running at its intended location" error, you need to hold shift + o + k while it loads for it to work. 
+When a game does not load/gets stuck at loading, right click on it and hit restart. As for hannah and the ice caves, if you get the "Sorry. It appears that this game is not running at its intended location" error, you need to hold shift + o + k while it loads for it to work. 
 
 ## Neohome v2
 
