@@ -102,4 +102,12 @@ if (oSession.uriContains("neohome/property/")) {
 
 Note that unlike the other rules it does not go in OnBeforeRequest section, it goes in the OnBeforeResponse
 
+## Kacheek Seek
 
+```
+if (oSession.uriContains("process_hideandseek.phtml")) {
+  oSession["Referrer"] = oSession["Referrer"].replace("https", "http");
+}
+```
+
+This fixes being able to play kacheek seek
