@@ -5,8 +5,6 @@ saved_cookies = None
 
 FILES_DIR = str(Path(__file__).parent)
 
-print(Path(FILES_DIR + '\games\g1347_v66_45083.swf').is_file())
-
 def load(loader):
     ctx.options.http2 = False
 
