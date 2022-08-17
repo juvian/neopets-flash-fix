@@ -8,10 +8,6 @@ FILES_DIR = str(Path(__file__).parent)
 def load(loader):
     ctx.options.http2 = False
 
-def response(flow):
-    if "process_tcg_redeem3" in flow:
-        print(flow.response.content)
-
 def request(flow):
     url = flow.request.pretty_url
     if "neopets.com" in flow.request.host:
