@@ -131,3 +131,11 @@ if (oSession.uriContains("process_hideandseek.phtml")) {
 ```
 
 This fixes being able to play kacheek seek
+
+## With header editor (easiest setup but many games won't work)
+
+1. Do Waterfox steps from [this reddit post](https://www.reddit.com/r/neopets/comments/s7jzyt/how_to_enable_flash_post_endoflife/)
+2. Install [Header Editor](https://addons.mozilla.org/en-US/firefox/addon/header-editor/?utm_source=addons.mozilla.org&utm_medium=referral&utm_content=search)
+3. Click extension icon -> manage -> Export and Import
+4. Paste in Download Rule URL https://raw.githubusercontent.com/juvian/neopets-flash-fix/main/header-editor/rules.json
+5. Click download icon and then click save
