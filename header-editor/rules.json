@@ -1,0 +1,20 @@
+{
+	"request": [
+		{
+			"enable": true,
+			"name": "neo",
+			"ruleType": "redirect",
+			"matchType": "regexp",
+			"pattern": "http://www.neopets.com(.*)",
+			"exclude": ".*crossdomain.*",
+			"group": "Ungrouped",
+			"isFunction": false,
+			"action": "redirect",
+			"to": "https://www.neopets.com$1",
+			"_exclude": {}
+		}
+	],
+	"sendHeader": [],
+	"receiveHeader": [],
+	"receiveBody": []
+}
