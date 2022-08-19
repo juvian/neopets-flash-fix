@@ -3,7 +3,7 @@
 ## With Fiddler
 
 1. Do Waterfox steps from [this reddit post](https://www.reddit.com/r/neopets/comments/s7jzyt/how_to_enable_flash_post_endoflife/)
-2. Install [Fiddler Classic](https://www.telerik.com/download/fiddler) (if mac, try [virtual machine](https://docs.telerik.com/fiddler/configure-fiddler/tasks/configureformac) or [proxyman](proxyman))
+2. Install [Fiddler Classic](https://www.telerik.com/download/fiddler) (if mac, try [virtual machine] or do the with mitmproxy steps)
 3. Find fiddler script folder (usually Documents\Fiddler2\Scripts) and replace [CustomRules.js](/fiddler/CustomRules.js)
 4. Open fiddler
 5. Play
