@@ -2,12 +2,12 @@
 	"request": [
 		{
 			"enable": true,
-			"name": "neo",
+			"name": "neo https redirect",
 			"ruleType": "redirect",
 			"matchType": "regexp",
 			"pattern": "http://www.neopets.com(.*)",
-			"exclude": ".*crossdomain.*",
-			"group": "Ungrouped",
+			"exclude": "none",
+			"group": "neopets",
 			"isFunction": false,
 			"action": "redirect",
 			"to": "https://www.neopets.com$1",
