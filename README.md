@@ -9,6 +9,8 @@ You will need to setup fiddler or mitmproxy. Depending on the type of games you 
 
 1. Follow [3dvia guide](https://www.youtube.com/watch?v=NH8WfY7MvU4)
 
+When a game does not load/gets stuck at loading, right click on it and hit restart. As for hannah and the ice caves, if you get the "Sorry. It appears that this game is not running at its intended location" error, you need to hold shift + o + k while it loads for it to work.
+
 ### Flash games
 
 1. Follow [this reddit post](https://www.reddit.com/r/neopets/comments/s7jzyt/how_to_enable_flash_post_endoflife/) (I recommend waterfox)
