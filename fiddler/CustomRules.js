@@ -187,11 +187,17 @@ class Handlers
 			}
 			
 			//fixes extra
-			if (oSession.uriContains(".swf") || oSession.uriContains(".txt")) {
-				var path = "neopets" + oSession.PathAndQuery;
+			if (oSession.uriContains(".swf") || oSession.uriContains(".txt") || oSession.oRequest.headers.Exists("x-flash-version")) {
+				var path = "neopets" + oSession.PathAndQuery
+				if (oSession.oRequest.headers.Exists("x-flash-version")) {
+					path = path.Split("?")[0];
+				}
 				if (System.IO.File.Exists(path)) {
 					oSession.utilCreateResponseAndBypassServer();
 					oSession.ResponseBody = System.IO.File.ReadAllBytes(path);
+					if (path.Contains(".xml")) {
+						oSession.oResponse.headers["Content-Type"] = "text/xml";
+					}
 				}
 				
 			}
@@ -258,7 +264,7 @@ class Handlers
 	static var saved_cookies;
 			
     static function OnPeekAtRequestHeaders(oSession: Session) {
-		if (oSession.host.Contains("neopets.com") && oSession.HTTPMethodIs("CONNECT") == false) {
+		if (oSession.host.Contains("neopets.com") && oSession.HTTPMethodIs("CONNECT") == false && oSession.HostnameIs("swf.neopets.com") == false) {
 			oSession.oRequest.headers.UriScheme = "https";
 			
 			//fixes Clara on Ice, Let it Slide, Extreme Potato Counter
@@ -525,27 +531,3 @@ class Handlers
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
