@@ -1,5 +1,6 @@
 from mitmproxy import ctx, http
 from pathlib import Path
+import os
 
 saved_cookies = None
 
@@ -44,9 +45,10 @@ def requestheaders(flow):
             flow.request.headers["referer"] = "http://www.neopets.com/games/hidenseek"
         
         if url.endswith(".swf") or url.endswith(".txt"):
-            path = Path(FILES_DIR + flow.request.path.replace('/', '\\'))
-            if path.is_file():
-                flow.response = http.Response.make(200, open(path, "rb").read())
+            p = flow.request.path.replace('/', os.sep)
+            for path in [Path(FILES_DIR + p), Path(str(Path(__file__).resolve()).split("mitmproxy")[0] + "Fiddler" + os.sep + "neopets" + p)]:
+                if path.is_file():
+                    flow.response = http.Response.make(200, open(path, "rb").read())
 
 
 def response(flow):
