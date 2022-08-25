@@ -20,8 +20,9 @@ When a game does not load/gets stuck at loading, right click on it and hit resta
 
 1. Install [Fiddler Classic](https://www.telerik.com/download/fiddler) (if mac, try [virtual machine] or do the with mitmproxy steps)
 2. Find fiddler script folder (usually Documents\Fiddler2\Scripts) and replace [CustomRules.js](/fiddler/CustomRules.js)
-3. Open fiddler
-4. Play
+3. In fiddler go to Tools -> Options -> HTTPS -> make sure capture https connect, decrypt https traffic and ignore server certificate errors are enabled. Restart fidd
+4. Open fiddler
+5. Play
 
 ### Extra
 
