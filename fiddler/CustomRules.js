@@ -172,6 +172,8 @@ class Handlers
 		}
 		
 		if (oSession.host.Contains("neopets.com") && oSession.HTTPMethodIs("CONNECT") == false) {
+            oSession["x-OverrideSslProtocols"] = " ssl3;tls1.0;tls1.1;tls1.2";
+            
 			if (oSession.HostnameIs("dev.neopets.com")) {
 				oSession.host = "www.neopets.com";
 				//try to fix cookies not sent to dev to bypass stackpath
