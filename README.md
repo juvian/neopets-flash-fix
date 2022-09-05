@@ -53,7 +53,7 @@ Some swf games like [Assignment 53](https://www.neopets.com/games/game.phtml/?ga
 2. Go to about:preferences in waterfox, search for proxy and click settings. If using fiddler, make sure Use System Proxy is checked. If using mitmproxy, make sure Manual proxy configuration is checked
 3. Make sure to accept risk and continue with [neopets images](https://images.neopets.com/) if asked
 4. If you go to about:plugins in waterfox, make sure flash version is 32.0.0.371 or lower
-5. 5. If Assignment 53 is still not working after having completed extra steps, try opening developer console in waterfox (ctrl + shift + i), then go to network tab, check disable cache and then refresh game page
+5. If Assignment 53 is still not working after having completed extra steps, try opening developer console in waterfox (ctrl + shift + i), then go to network tab, check disable cache and then refresh game page
 
 # Header editor setup (easiest setup but many games won't work)
 
