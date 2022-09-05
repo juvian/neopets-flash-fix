@@ -48,6 +48,12 @@ Some swf games like [Assignment 53](https://www.neopets.com/games/game.phtml/?ga
 1. Download [neopets folder](https://download-directory.github.io/?url=https://github.com/juvian/neopets-flash-fix/tree/main/neopets)
 2. Find mitmproxy installation path, go to mitmproxy/addons/neopets folder and unzip games folder there. Directory should end up with neopets.py file and games folder
 
+# Troubleshooting 
+1. If using waterfox, make sure it says version G3.2.6 when going to about:support
+2. Go to about:preferences in waterfox, search for proxy and click settings. If using fiddler, make sure Use System Proxy is checked. If using mitmproxy, make sure Manual proxy configuration is checked
+3. Make sure to accept risk and continue with [neopets images](https://images.neopets.com/) if asked
+4. If you go to about:plugins in waterfox, make sure flash version is 32.0.0.371 or lower
+
 # Header editor setup (easiest setup but many games won't work)
 
 1. Install [Header Editor](https://addons.mozilla.org/en-US/firefox/addon/header-editor/?utm_source=addons.mozilla.org&utm_medium=referral&utm_content=search)
