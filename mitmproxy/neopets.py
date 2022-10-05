@@ -1,6 +1,7 @@
 from mitmproxy import ctx, http
 from pathlib import Path
 import os
+import re
 
 saved_cookies = None
 
@@ -34,7 +35,7 @@ def requestheaders(flow):
         #fixes Clara on Ice, Let it Slide, Extreme Potato Counter
         if ".swf" in url or "/config.xml" in url or "/shellconfig.xml" in url:
             flow.request.host = "images.neopets.com"
-            flow.request.url = flow.request.url.replace("/games/https://images.neopets.com/games/", "/games/").replace("games/games", "games")
+            flow.request.url = re.sub(r"/games/.*/games/", "/games/", flow.request.url).replace("games/games", "games")
         
         #fixes 3dvia games like Terror Mountain Tilt
         if "virtools.download.akamai.com/6712/player/install/" in url:
