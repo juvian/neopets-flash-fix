@@ -274,10 +274,6 @@ class Handlers
 				oSession.host = "images.neopets.com";
 				oSession.url = oSession.url.Replace("/games/https://images.neopets.com/games/", "/games/").Replace("games/games", "games");
 			}
-			//fixes 3dvia games like Terror Mountain Tilt
-			if (oSession.uriContains("virtools.download.akamai.com/6712/player/install/")) {
-				oSession.fullUrl = "https://3dlifeplayer.dl.3dvia.com/" + oSession.url.Substring(oSession.url.lastIndexOf("player/install"));
-			}
 			//fixes kacheek seek
 			if (oSession.uriContains("process_hideandseek.phtml")) {
 				oSession.oRequest.headers["Referer"] = "http://www.neopets.com/games/hidenseek";	
@@ -328,6 +324,10 @@ class Handlers
 			//fixes neohome v2
 			if (oSession.uriContains("neohome/property/")) {
 				oSession.utilSetResponseBody(oSession.GetResponseBodyAsString().Replace('services.neopets', 'www.neopets').Replace("http%3A", "https%3A"));    					
+			}
+			//fixes 3dvia games like Terror Mountain Tilt
+			if (oSession.uriContains("play_flash.phtml") && oSession.GetResponseBodyAsString().Contains("virtools.download.akamai.com")) {
+				oSession.utilSetResponseBody(oSession.GetResponseBodyAsString().Replace("http://a532.g.akamai.net/f/532/6712/5m/virtools.download.akamai.com/6712", "https://3dlifeplayer.dl.3dvia.com"));
 			}
 		}
     }
