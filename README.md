@@ -1,6 +1,6 @@
 # How to play most games
 
-You will need to setup fiddler or mitmproxy. Depending on the type of games you want to play you might require IE / chrome with IE tab or waterfox browser
+You will need to setup fiddler (windows only) or mitmproxy (should just use if mac as fiddler is easier). Depending on the type of games you want to play you might require IE / chrome with IE tab or waterfox browser
 
 ### Shockwave
 1. Follow [shockwave guide](https://www.youtube.com/watch?v=LdkiSc5TNL0)
@@ -13,15 +13,16 @@ When a game does not load/gets stuck at loading, right click on it and hit resta
 
 ### Flash games
 
-1. Follow [this reddit post](https://www.reddit.com/r/neopets/comments/s7jzyt/how_to_enable_flash_post_endoflife/) (I recommend waterfox)
+1. Install a browser that supports flash like [waterfox](https://cdn.waterfox.net/releases/win64/installer/Waterfox%20G3.2.6%20Setup.exe) and [this flash version](http://andkon.com/arcade/install_flash_player.exe). For other options check [this reddit post](https://www.reddit.com/r/neopets/comments/s7jzyt/how_to_enable_flash_post_endoflife/).
 2. In waterfox go to about:config then search security.enterprise_roots.enabled and change it to true
 
-# Fiddler Setup
+# Fiddler Setup (Windows)
 
 1. Install [Fiddler Classic](https://www.telerik.com/download/fiddler) (if mac, try [virtual machine] or do the with mitmproxy steps)
-2. Find fiddler script folder (usually Documents\Fiddler2\Scripts) and replace/add [CustomRules.js](/fiddler/CustomRules.js)
-3. In fiddler go to Tools -> Options -> HTTPS -> make sure capture https connect, decrypt https traffic and ignore server certificate errors are enabled. Restart fiddler
+2. Find fiddler script folder (usually Documents\Fiddler2\Scripts) and replace/add [CustomRules.js](/fiddler/CustomRules.js). Another option is in fiddler go to rules -> customize rules and overwrite the content with my file. 
+3. In fiddler go to Tools -> Options -> HTTPS -> make sure capture https connect, decrypt https traffic and ignore server certificate errors are enabled. Restart fiddler 
 4. Open fiddler
+5. Go to https://images.neopets.com and accept risks if it prompts you about it
 5. Play
 
 ### Extra
@@ -31,7 +32,7 @@ Some swf games like [Assignment 53](https://www.neopets.com/games/game.phtml/?ga
 1. Download [neopets folder](https://download-directory.github.io/?url=https://github.com/juvian/neopets-flash-fix/tree/main/neopets)
 2. Find fiddler installation path (usually C:\Program Files\Fiddler), create a neopets folder and unzip files inside it. Should end up looking like neopets/games/...
 
-# Mitmproxy Setup
+# Mitmproxy Setup (Mac)
 1. In waterfox go to about:preferences then search for proxy then click on settings and Set Manual proxy configuration to 127.0.0.1 with port 8080. Make sure to also check use this proxy for FTP and HTTPs. [IE has a similar setup](https://docs.microsoft.com/en-us/troubleshoot/developer/browsers/connectivity-navigation/use-proxy-servers-with-ie)
 
 ![image](https://user-images.githubusercontent.com/5660396/185045695-d6c32114-e096-4533-8e16-1e0eaaadfa66.png)
@@ -54,6 +55,7 @@ Some swf games like [Assignment 53](https://www.neopets.com/games/game.phtml/?ga
 3. Make sure to accept risk and continue with [neopets images](https://images.neopets.com/) if asked
 4. If you go to about:plugins in waterfox, make sure flash version is 32.0.0.371 or lower
 5. If Assignment 53 is still not working after having completed extra steps, try opening developer console in waterfox (ctrl + shift + i), then go to network tab, check disable cache and then refresh game page
+6. If you send a score and it gets blocked by stackpath, you can go to fiddler log tab and see the url that was sent to process the score. Copy it and open it manually in a new tab and it should send.
 
 # Header editor setup (easiest setup but many games won't work)
 
