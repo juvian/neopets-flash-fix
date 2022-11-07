@@ -329,6 +329,9 @@ class Handlers
 			if (oSession.uriContains("play_flash.phtml") && oSession.GetResponseBodyAsString().Contains("virtools.download.akamai.com")) {
 				oSession.utilSetResponseBody(oSession.GetResponseBodyAsString().Replace("http://a532.g.akamai.net/f/532/6712/5m/virtools.download.akamai.com/6712", "https://3dlifeplayer.dl.3dvia.com"));
 			}
+			if (oSession.uriContains("process_flash_score.phtml")) {
+				FiddlerObject.log(oSession.fullUrl);
+			}
 		}
     }
 
