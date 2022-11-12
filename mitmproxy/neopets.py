@@ -39,7 +39,7 @@ def requestheaders(flow):
         
         #fixes 3dvia games like Terror Mountain Tilt
         if "virtools.download.akamai.com/6712/player/install/" in url:
-            flow.request.url = "https://3dlifeplayer.dl.3dvia.com/" + url.substring(url.lastIndexOf("player/install"))
+            flow.request.url = "https://3dlifeplayer.dl.3dvia.com/" + url[url.rindex("player/install"):]
         
         #fixes kacheek seek
         if "process_hideandseek.phtml" in url:
