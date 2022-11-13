@@ -1,23 +1,26 @@
-from mitmproxy import ctx, http
-from pathlib import Path
 import os
 import re
+from pathlib import Path
+from typing import Optional
 
-saved_cookies = None
+from mitmproxy import ctx, http
+from mitmproxy.addonmanager import Loader
+
+saved_cookies: Optional[http.Headers] = None
 
 FILES_DIR = str(Path(__file__).parent)
 
-def load(loader):
+def load(loader: Loader) -> None:
     ctx.options.http2 = False
 
-def request(flow):
+def request(flow: http.HTTPFlow) -> None:
     url = flow.request.pretty_url
     if "neopets.com" in flow.request.host:
         #fixes games pointing to dev server that have chinese lang when offline
         if "gettranslationxml.phtml" in url and flow.request.method == "POST" and "lang" in flow.request.urlencoded_form:
             flow.request.urlencoded_form["lang"] = "en"
 
-def requestheaders(flow):
+def requestheaders(flow: http.HTTPFlow) -> None:
     global saved_cookies
     url = flow.request.pretty_url
     if "neopets.com" in flow.request.host:
@@ -52,11 +55,11 @@ def requestheaders(flow):
                     flow.response = http.Response.make(200, open(path, "rb").read())
 
 
-def response(flow):
+def response(flow: http.HTTPFlow) -> None:
     url = flow.request.pretty_url
-    if "neopets.com" in flow.request.host:
+    if "neopets.com" in flow.request.host and flow.response is not None and flow.response.content is not None:
         #fixes shockwave games
-        if "play_shockwave.phtml" in url and "game_container" in flow.response.content:
+        if "play_shockwave.phtml" in url and b"game_container" in flow.response.content:
             flow.response.content = flow.response.content.replace(b"document.write", b"console.log").replace(b"swRestart='false'", b"swRestart='true'").replace(b"swContextMenu='false'", b"swContextMenu='true'")
 
         #fixes neohome v2
