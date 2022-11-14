@@ -13,7 +13,7 @@ When a game does not load/gets stuck at loading, right click on it and hit resta
 
 ### Flash games
 
-1. Install a browser that supports flash like [waterfox](https://cdn.waterfox.net/releases/win64/installer/Waterfox%20G3.2.6%20Setup.exe) and [this flash version](http://andkon.com/arcade/install_flash_player.exe). For other options check [this reddit post](https://www.reddit.com/r/neopets/comments/s7jzyt/how_to_enable_flash_post_endoflife/).
+1. Install a browser that supports flash like [waterfox](https://cdn.waterfox.net/releases/win64/installer/Waterfox%20G3.2.6%20Setup.exe) and [flash](http://andkon.com/arcade/faq.php). For other options check [this reddit post](https://www.reddit.com/r/neopets/comments/s7jzyt/how_to_enable_flash_post_endoflife/).
 2. In waterfox go to about:config then search security.enterprise_roots.enabled and change it to true
 
 # Fiddler Setup (Windows)
