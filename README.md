@@ -1,9 +1,9 @@
 # How to play most games
 
-You will need to setup fiddler (windows only) or mitmproxy (should just use if mac as fiddler is easier). Depending on the type of games you want to play you might require IE / chrome with IE tab or waterfox browser
+You will need to setup fiddler (windows only) or mitmproxy (should just use if mac as fiddler is easier). Depending on the type of games you want to play you might require IE or waterfox browser
 
 ### Shockwave
-1. Follow [shockwave guide](https://www.youtube.com/watch?v=LdkiSc5TNL0)
+1. Follow [shockwave guide](https://www.youtube.com/watch?v=LdkiSc5TNL0). I don't think the IE tab option works
 
 ### 3dvia games
 
