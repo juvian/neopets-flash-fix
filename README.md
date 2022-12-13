@@ -39,7 +39,7 @@ Some swf games like [Assignment 53](https://www.neopets.com/games/game.phtml/?ga
 
 2. Install [Mitmproxy](https://mitmproxy.org/)
 3. Find mitmproxy installation path, go to mitmproxy/addons folder, create a neopets folder and put the [neopets.py](/mitmproxy/neopets.py) file inside it (something like C:\Program Files\mitmproxy\bin\mitmproxy\addons\neopets)
-4. Find mitmproxy installation path, create a shortcut out of mitmdump.exe. Right click shortcut -> properties -> add -s mitmproxy\addons\neopets\neopets.py to the end of target (should end up like "C:\Program Files\mitmproxy\bin\mitmdump.exe" -s mitmproxy\addons\neopets\neopets.py). Click apply
+4. Find mitmproxy installation path, create a shortcut out of mitmdump.exe. Right click shortcut -> properties -> add -s mitmproxy\addons\neopets\neopets.py to the end of target (should end up like "C:\Program Files\mitmproxy\bin\mitmdump.exe" -s mitmproxy\addons\neopets\neopets.py). Click apply. Note that Mac uses forward slashes instead of backward slash like Windows for file paths.
 5. Run mitmproxy (double click shortcut)
 6. Go to [http://mitm.it/](http://mitm.it/). Show instructions and install certificate 
 7. Play
