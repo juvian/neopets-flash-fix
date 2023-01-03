@@ -9,7 +9,7 @@ You will need to setup fiddler (windows only) or mitmproxy (should just use if m
 
 1. Follow [3dvia guide](https://www.youtube.com/watch?v=NH8WfY7MvU4)
 
-When a game does not load/gets stuck at loading, right click on it and hit restart. As for hannah and the ice caves, if you get the "Sorry. It appears that this game is not running at its intended location" error, you need to hold shift + o + k while it loads for it to work.
+When a game does not load/gets stuck at loading, right click on it and hit restart. As for hannah and the ice caves, if you get the "Sorry. It appears that this game is not running at its intended location" error, you need to hold shift + o + k while it loads for it to work. 
 
 ### Flash games
 
@@ -56,6 +56,7 @@ Some swf games like [Assignment 53](https://www.neopets.com/games/game.phtml/?ga
 4. If you go to about:plugins in waterfox, make sure flash version is 32.0.0.371 or lower
 5. If Assignment 53 is still not working after having completed extra steps, try opening developer console in waterfox (ctrl + shift + i), then go to network tab, check disable cache and then refresh game page
 6. If you send a score and it gets blocked by stackpath, you can go to fiddler log tab and see the url that was sent to process the score. Copy it and open it manually in a new tab and it should send.
+7. If 3dvia games are the ones not working, go [here](https://3dlifeplayer.dl.3dvia.com/player/install/3DLifePlayer.js) and accept risk if prompted
 
 # Header editor setup (easiest setup but many games won't work)
 
