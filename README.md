@@ -1,3 +1,5 @@
+Another user has made a more [detailed guide](https://github.com/themrrobert/neopets-flash-fix-windows-10) for windows you might want to check instead.
+
 # How to play most games
 
 You will need to setup fiddler (windows only) or mitmproxy (should just use if mac as fiddler is easier). Depending on the type of games you want to play you might require IE or waterfox browser
