@@ -61,6 +61,10 @@ Some swf games like [Assignment 53](https://www.neopets.com/games/game.phtml/?ga
 ![image](https://user-images.githubusercontent.com/5660396/210623327-1adcdbbc-e998-49b4-b5b3-a026feef87d2.png)
 7. If 3dvia games are the ones not working, go [here](https://3dlifeplayer.dl.3dvia.com/player/install/3DLifePlayer.js) and accept risk if prompted
 
+# Can't login to IE
+A more technical way of logging in is to login in your usual browser like chrome, open developer console (ctrl + shift + i), write `document.cookie.split(';').find(c => c.includes('neologin')).trim()` in console, hit enter and you will see something like neologin=youruserxxxxx (don't show anyone this value!!!).
+Then in Ie visit neopets.com, open developer console (f12) and write `document.cookie = "yyy"` where yyy is what you got from chrome (neologin=youruserxxxxx). Then refresh and you should be logged in.
+
 # Header editor setup (easiest setup but many games won't work)
 
 1. Install [Header Editor](https://addons.mozilla.org/en-US/firefox/addon/header-editor/?utm_source=addons.mozilla.org&utm_medium=referral&utm_content=search)
