@@ -1,8 +1,8 @@
-Another user has made a more [detailed guide](https://github.com/themrrobert/neopets-flash-fix-windows-10) for windows you might want to check instead.
+Another user has made a more [detailed guide](https://github.com/themrrobert/neopets-flash-fix-windows-10) for Windows you might want to check instead.
 
 # How to play most games
 
-You will need to setup fiddler (windows only) or mitmproxy (should just use if mac as fiddler is easier). Depending on the type of games you want to play you might require IE or waterfox browser
+You will need to setup Fiddler (Windows only) or mitmproxy (MacOS only). Waterfox browser 3.2.6 is recommended for most games.
 
 ### Shockwave
 1. Follow [shockwave guide](https://www.youtube.com/watch?v=LdkiSc5TNL0). I don't think the IE tab option works
@@ -13,14 +13,20 @@ You will need to setup fiddler (windows only) or mitmproxy (should just use if m
 
 When a game does not load/gets stuck at loading, right click on it and hit restart. As for hannah and the ice caves, if you get the "Sorry. It appears that this game is not running at its intended location" error, you need to hold shift + o + k while it loads for it to work. 
 
-### Flash games
+### Waterfox
 
-1. Install a browser that supports flash like [waterfox](https://cdn.waterfox.net/releases/win64/installer/Waterfox%20G3.2.6%20Setup.exe) and [flash](http://andkon.com/arcade/faq.php). For other options check [this reddit post](https://www.reddit.com/r/neopets/comments/s7jzyt/how_to_enable_flash_post_endoflife/).
-2. In waterfox go to about:config then search security.enterprise_roots.enabled and change it to true
+1. Install a browser that supports Flash like Waterfox 3.2.6 (for [Windows](https://cdn.waterfox.net/releases/win64/installer/Waterfox%20G3.2.6%20Setup.exe) or [MacOS](https://cdn.waterfox.net/releases/osx64/installer/Waterfox%20G3.2.6%20Setup.dmg)).
+2. Immediately open Waterfox after installation and go to about:preferences. Under Waterfox Updates, allow Waterfox to "Check for updates but let you choose to install them" instead of "Automatically install updates (recommended)".
+3. Go to about:config and search for security.enterprise_roots.enabled, then double click it to change it to true.
+
+### Flash Player
+
+1. Install Flash 32.0.0.293 **while disconnected from the Internet**. Currently the Flash zip can be found [here](https://archive.org/details/flashplayerarchive). On the right, click "ZIP FILES" to expand it, and scroll down to find and download fp_32.0.0.293_archive.zip. Install it.
+2. Set Flash to not automatically update at the end of the installation process, then you can reconnect to the Internet.
 
 # Fiddler Setup (Windows)
 
-1. Install [Fiddler Classic](https://www.telerik.com/download/fiddler) (if mac, try [virtual machine] or do the with mitmproxy steps)
+1. Install [Fiddler Classic](https://www.telerik.com/download/fiddler)
 2. Find fiddler script folder (usually Documents\Fiddler2\Scripts) and replace/add [CustomRules.js](/fiddler/CustomRules.js). Another option is in fiddler go to rules -> customize rules and overwrite the content with my file. 
 3. In fiddler go to Tools -> Options -> HTTPS -> make sure capture https connect, decrypt https traffic and ignore server certificate errors are enabled. Restart fiddler 
 4. Open fiddler
@@ -34,17 +40,56 @@ Some swf games like [Assignment 53](https://www.neopets.com/games/game.phtml/?ga
 1. Download [neopets folder](https://download-directory.github.io/?url=https://github.com/juvian/neopets-flash-fix/tree/main/neopets)
 2. Find fiddler installation path (usually C:\Program Files\Fiddler), create a neopets folder and unzip files inside it. Should end up looking like neopets/games/...
 
-# Mitmproxy Setup (Mac)
-1. In waterfox go to about:preferences then search for proxy then click on settings and Set Manual proxy configuration to 127.0.0.1 with port 8080. Make sure to also check use this proxy for FTP and HTTPs. [IE has a similar setup](https://docs.microsoft.com/en-us/troubleshoot/developer/browsers/connectivity-navigation/use-proxy-servers-with-ie)
+# Mitmproxy Setup (MacOS)
+1. In Waterfox, again go to about:preferences and search for proxy. Click on settings and Select Manual proxy configuration, then set HTTP Proxy to 127.0.0.1 with port 8080. Make sure to also check the box to "Also use this proxy for FTP and HTTPS". [IE has a similar setup](https://docs.microsoft.com/en-us/troubleshoot/developer/browsers/connectivity-navigation/use-proxy-servers-with-ie)
 
 ![image](https://user-images.githubusercontent.com/5660396/185045695-d6c32114-e096-4533-8e16-1e0eaaadfa66.png)
 
-2. Install [Mitmproxy](https://mitmproxy.org/)
-3. Find mitmproxy installation path, go to mitmproxy/addons folder, create a neopets folder and put the [neopets.py](/mitmproxy/neopets.py) file inside it (something like C:\Program Files\mitmproxy\bin\mitmproxy\addons\neopets)
-4. Find mitmproxy installation path, create a shortcut out of mitmdump.exe. Right click shortcut -> properties -> add -s mitmproxy\addons\neopets\neopets.py to the end of target (should end up like "C:\Program Files\mitmproxy\bin\mitmdump.exe" -s mitmproxy\addons\neopets\neopets.py). Click apply. Note that Mac uses forward slashes instead of backward slash like Windows for file paths.
-5. Run mitmproxy (double click shortcut)
-6. Go to [http://mitm.it/](http://mitm.it/). Show instructions and install certificate 
-7. Play
+2. Install [Mitmproxy](https://mitmproxy.org/). The easiest way is via [Homebrew](https://brew.sh/) on the MacOS Terminal:
+```
+brew install mitmproxy
+```
+3. Locate the addons directory where mitmproxy has been installed by running this command:
+```
+locate mitmproxy | grep addons
+```
+If this command prompts you to build the database first by running a command like `sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist`, execute that, then wait a few minutes and retry the `locate mitmproxy | grep addons` step until it returns output.
+
+The locate command returns a lot of output. You are looking for the filepath that contains an addons directory. In particular, many of the files returned will be .py files in that directory, like so:
+```
+/opt/homebrew/Cellar/mitmproxy/9.0.1/libexec/lib/python3.11/site-packages/mitmproxy/addons/anticache.py
+/opt/homebrew/Cellar/mitmproxy/9.0.1/libexec/lib/python3.11/site-packages/mitmproxy/addons/anticomp.py
+/opt/homebrew/Cellar/mitmproxy/9.0.1/libexec/lib/python3.11/site-packages/mitmproxy/addons/asgiapp.py
+```
+Note that this location will change over time as mitmproxy releases new versions, so you must find the correct one for you and substitute it in the following commands. This is where you will place your [neopets.py](/mitmproxy/neopets.py) file. So run these commands to get there and create a neopets directory:
+```
+cd /opt/homebrew/Cellar/mitmproxy/9.0.1/libexec/lib/python3.11/site-packages/mitmproxy/addons
+mkdir neopets
+```
+Then copy and paste the content from [neopets.py](/mitmproxy/neopets.py):
+```
+vim neopets/neopets.py
+```
+(You can substitute vim with your favorite text editor, or use Sublime Text, etc.)
+
+4. Now run mitmdump with that new file as the script (-s):
+```
+mitmdump -s /opt/homebrew/Cellar/mitmproxy/9.0.1/libexec/lib/python3.11/site-packages/mitmproxy/addons/neopets/neopets.py
+```
+This launches mitmproxy using our specified configuration. **You will run this command every time you want to play Flash games.**
+
+*(Pressing ctrl+c on the terminal window you ran mitmproxy from will stop the program running once you're done. Closing the terminal or rebooting will also stop it.)*
+
+5. In Waterfox, while mitmproxy is running, go to http://mitm.it/ and go to the MacOS line. Download the mitmproxy-ca-cert.pem file (in the example below, it was placed in ~/Downloads). Click Show instructions and note the command for "Automated installation". Open a new Terminal window (since currently we're running mitmproxy in our first one) and run that command in the terminal; enter your password when prompted to allow it:
+```
+sudo security add-trusted-cert -d -p ssl -p basic -k /Library/Keychains/System.keychain ~/Downloads/mitmproxy-ca-cert.pem
+```
+
+6. You must wait for the certificate to take effect. As long as you are still seeing "This certificate is marked as not trusted for all users" when examining that certificate in the Keychain Access tool (you can open Keychain Access and search for mitmproxy to find it), it will cause the sites you visit to throw certificate errors. After about 10-15 minutes it should switch over to "This certificate is marked as trusted for all users." 
+
+If any issues, verify that if you double-click that certificate in Keychain Access and click to expand the "Trust" category, your working configuration has Secure Sockets Layer (SSL) set to Always Trust, and X.509 Basic Policy to Always Trust, with the other values left unspecified, and it should say "This certificate is marked as trusted for all users." at the top.
+
+7. Try playing any Flash game in Neopets. Make sure mitmproxy has been launched. You might have to allow keyboard access to Waterfox: Go to System Preferences > Privacy & Security > Privacy Tab at the top > Find Input Monitoring (64-bit systems // Catalina and later) on the right > click the lock in bottom left & input password > add WaterFox.
 
 ### Extra
 
