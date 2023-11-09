@@ -23,7 +23,7 @@ def request(flow: http.HTTPFlow) -> None:
 def requestheaders(flow: http.HTTPFlow) -> None:
     global saved_cookies
     url = flow.request.pretty_url
-    if "neopets.com" in flow.request.host:
+    if "neopets.com" in flow.request.host or "virtools" in flow.request.host:
         flow.request.scheme = "https"
         flow.request.port = 443
 
