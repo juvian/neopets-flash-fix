@@ -59,6 +59,7 @@ Then, the following command opens a new file, and copies and pastes the content 
 vim neopets/neopets.py
 (press i)
 (ensure that you have all the lines of that file in your clipboard, then press cmd+v)
+(press escape)
 (press :wq, as in colon, w, q)
 ```
 (You can substitute vim with your favorite text editor, or use Sublime Text, etc. As long as you save that content in a file somewhere for the next step.)
