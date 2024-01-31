@@ -49,32 +49,23 @@ Some swf games like [Assignment 53](https://www.neopets.com/games/game.phtml/?ga
 ```
 brew install mitmproxy
 ```
-3. Locate the addons directory where mitmproxy has been installed by running this command:
+3. Create a [neopets.py](/mitmproxy/neopets.py) file. The location does not matter, but as an example, the following command takes you to your home directory and creates a new directory called neopets:
 ```
-locate mitmproxy | grep addons
-```
-If this command prompts you to build the database first by running a command like `sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist`, execute that, then wait a few minutes and retry the `locate mitmproxy | grep addons` step until it returns output.
-
-The locate command returns a lot of output. You are looking for the filepath that contains an addons directory. In particular, many of the files returned will be .py files in that directory, like so:
-```
-/opt/homebrew/Cellar/mitmproxy/9.0.1/libexec/lib/python3.11/site-packages/mitmproxy/addons/anticache.py
-/opt/homebrew/Cellar/mitmproxy/9.0.1/libexec/lib/python3.11/site-packages/mitmproxy/addons/anticomp.py
-/opt/homebrew/Cellar/mitmproxy/9.0.1/libexec/lib/python3.11/site-packages/mitmproxy/addons/asgiapp.py
-```
-Note that this location will change over time as mitmproxy releases new versions, so you must find the correct one for you and substitute it in the following commands. This is where you will place your [neopets.py](/mitmproxy/neopets.py) file. So run these commands to get there and create a neopets directory:
-```
-cd /opt/homebrew/Cellar/mitmproxy/9.0.1/libexec/lib/python3.11/site-packages/mitmproxy/addons
+cd ~
 mkdir neopets
 ```
-Then copy and paste the content from [neopets.py](/mitmproxy/neopets.py):
+Then, the following command opens a new file, and copies and pastes the content from [neopets.py](/mitmproxy/neopets.py):
 ```
 vim neopets/neopets.py
+(press i)
+(ensure that you have all the lines of that file in your clipboard, then press cmd+v)
+(press :wq, as in colon, w, q)
 ```
-(You can substitute vim with your favorite text editor, or use Sublime Text, etc.)
+(You can substitute vim with your favorite text editor, or use Sublime Text, etc. As long as you save that content in a file somewhere for the next step.)
 
 4. Now run mitmdump with that new file as the script (-s):
 ```
-mitmdump -s /opt/homebrew/Cellar/mitmproxy/9.0.1/libexec/lib/python3.11/site-packages/mitmproxy/addons/neopets/neopets.py
+mitmdump -s ./neopets/neopets.py
 ```
 This launches mitmproxy using our specified configuration. **You will run this command every time you want to play Flash games.**
 
