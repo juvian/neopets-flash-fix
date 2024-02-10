@@ -15,7 +15,7 @@ When a game does not load/gets stuck at loading, right click on it and hit resta
 
 ### Waterfox
 
-1. Install a browser that supports Flash like Waterfox G3.2.6 (for [Windows](https://cdn.waterfox.net/releases/win64/installer/Waterfox%20G3.2.6%20Setup.exe) or [MacOS](https://cdn.waterfox.net/releases/osx64/installer/Waterfox%20G3.2.6%20Setup.dmg)).
+1. Install a browser that supports Flash like Waterfox G3.2.6 (for [Windows](https://web.archive.org/web/20221213222302/https://cdn.waterfox.net/releases/win64/installer/Waterfox%20G3.2.6%20Setup.exe) or [MacOS](https://web.archive.org/web/20230529125618/https://cdn.waterfox.net/releases/osx64/installer/Waterfox%20G3.2.6%20Setup.dmg)).
 2. **Immediately** open Waterfox after installation and go to about:preferences. Under Waterfox Updates, allow Waterfox to "Check for updates but let you choose to install them" instead of "Automatically install updates (recommended)". IMPORTANT: Double-check that it did not already update itself before proceeding. If necessary, reinstall version G3.2.6 while disconnected from the Internet.
 3. Go to about:config and search for security.enterprise_roots.enabled, then double click it to change it to true.
 
